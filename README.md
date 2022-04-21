@@ -42,49 +42,50 @@ NOTE: The computational grid of the program is T = 5 - 821 MeV,
 			the program is in the range T = 30 - 800 MeV, 
 			muB = 0 - 450 MeV. However, it can be modified within this 
 			range, and extended further to muB = 600 MeV.
-The program goes through the following steps:
-0A.) 	Read options
-0B.) 	Read parameter file
-1.) 	Import lattice data, multiply by T^4 and store. 
+The program goes through the following steps:<br />
+
+0A.) 	Read options<br /><br />
+0B.) 	Read parameter file<br /><br />
+1.) 	Import lattice data, multiply by T^4 and store. <br />
 NOTE: throughout the program, all quantities are dimensional. 
 			At the end, thermodynamic quantities exported are 
-			normalized with powers of the temperature.
+			normalized with powers of the temperature.<br /><br />
 2.) 	Given the choice of parameters, a coordinates file is created. 
-			It contains the map between (T,muB) and (R,theta).  
+			It contains the map between (T,muB) and (R,theta). <br /><br /> 
 4.) 	Using the coordinates file, the Ising contribution to the 
-			expansion coefficients is calculated.
+			expansion coefficients is calculated.<br /><br />
 5.) 	Using the coordinate file, the 3D Ising pressure and its derivatives 
-			are calculated at all points in the grid.
+			are calculated at all points in the grid.<br />
 NOTE: the calculation makes use of coordinate points with negative 
 			muB too, due to the symmetrization procedure described in 
-			the paper.
-5.b)  The correlation length is calculated over the grid.
+			the paper.<br /><br />
+5.b)  The correlation length is calculated over the grid.<br /><br />
 6.) 	The Non-Ising contribution to the expansion coefficients is 
-			calculated from the lattice coefficients and the Ising ones.
+			calculated from the lattice coefficients and the Ising ones.<br /><br />
 7.) 	The Non-Ising contribution to the pressure is calculated in 
 			all points in the grid, as a Taylor expansion of the Non-Ising 
-			coefficients.
+			coefficients.<br /><br />
 8.) 	The Non-Ising pressure is filtered through a Gaussian filter. 
 			This is done in order to reduce unphysical wiggles in the 
 			thermodynamic functions at largu muB due to the truncation of 
 			the Taylor series. The parameters of the filter do not need to 
-			be entered manually.
-9.) 	Numerical derivatives of the Non-Ising pressure are calculated.
+			be entered manually.<br /><br />
+9.) 	Numerical derivatives of the Non-Ising pressure are calculated.<br /><br />
 10.)	Ising and Non-Ising contributions to the pressure ad its 
-			derivatives are combined (summed).
+			derivatives are combined (summed).<br /><br />
 11.)	HRG pressure is imported and multiplied by T^4. Numerical 
-			derivatives of the pressure are calculated.
+			derivatives of the pressure are calculated.<br /><br />
 12.) 	HRG and Ising+Non-Ising contribution to the pressure and 
 		 	derivatives are combined via a smooth merging. The merging 
 			makes use of an hyperbolic tangent. The parameters of the 
-			merging do not need to be input manually.
+			merging do not need to be input manually.<br /><br />
 13.)	Once derivatives are defined, they are combined and normalized 
 			to generate the thermodynamics. Pressure, entropy density, 
 			baryon density, energy density, speed of sound and second baryon 
 			number cumulant are exported in the specified range. They are all 
 			normalized with powers of the temperature.
 			In this new version, we export the equilibrium correlation length
-			as well, which is defined up to a constant.
+			as well, which is defined up to a constant.<br /><br />
 
 
 RUNNING THE CODE
